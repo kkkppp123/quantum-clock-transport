@@ -1,0 +1,29 @@
+# Podstawowe numeryczne
+numpy>=1.26,<2.2
+scipy>=1.11,<1.14
+numba>=0.59,<0.61         # przyspieszenie (JIT); opcjonalne, ale polecam
+matplotlib>=3.8,<3.10
+tqdm>=4.66
+
+# Testy i jakość
+pytest>=8.0
+pytest-cov>=5.0
+hypothesis>=6.100         # property-based tests (opcjonalnie)
+black>=24.3
+ruff>=0.5
+pre-commit>=3.7
+
+# Narzędzia do danych/IO (opcjonalnie)
+pandas>=2.2
+
+# Dokumentacja (opcjonalne – jeśli będziesz generował HTML)
+sphinx>=7.3
+myst-parser>=2.0
+
+numpy
+scipy
+numba
+matplotlib
+pytest
+pytest-cov
+hypothesis
