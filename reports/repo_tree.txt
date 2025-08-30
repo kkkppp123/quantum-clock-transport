@@ -1,0 +1,9 @@
+﻿.gitignore
+.pre-commit-config.yaml
+computations/
+docs/
+LICENSE
+proofs/
+README.md
+requirements.txt
+tests/

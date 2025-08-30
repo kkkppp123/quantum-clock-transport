@@ -1,0 +1,114 @@
+{
+  "curvature": {
+    "path": "computations\\curvature.py",
+    "functions": [
+      "_order_correction",
+      "_order_scale",
+      "H_phi",
+      "H_TY",
+      "finite_diff_dparam",
+      "curvature",
+      "curvature_norm",
+      "Hphi_at",
+      "HT_at"
+    ],
+    "classes": [],
+    "lines": 142
+  },
+  "curvature_scaling": {
+    "path": "computations\\curvature_scaling.py",
+    "functions": [
+      "fit_log_slope",
+      "measure_series",
+      "print_table",
+      "plot_loglog"
+    ],
+    "classes": [],
+    "lines": 79
+  },
+  "evolution": {
+    "path": "computations\\evolution.py",
+    "functions": [
+      "H_eps_from_params",
+      "H_bounded_from_H",
+      "_matrix_sqrt_denman_beavers",
+      "H_pade_from_params",
+      "crank_nicolson_step",
+      "evolve",
+      "make_default_Hs"
+    ],
+    "classes": [],
+    "lines": 159
+  },
+  "operators": {
+    "path": "computations\\operators.py",
+    "functions": [
+      "make_volume_grid",
+      "theta_matrix",
+      "U_matrix",
+      "O_matrix"
+    ],
+    "classes": [],
+    "lines": 64
+  },
+  "propagator": {
+    "path": "computations\\propagator.py",
+    "functions": [
+      "_as_hermitian",
+      "_cn_step_matrix",
+      "_magnus1_step_matrix",
+      "step_unitary_matrix",
+      "time_ordered_propagator",
+      "evolve_time_dependent",
+      "unitarity_error"
+    ],
+    "classes": [],
+    "lines": 139
+  },
+  "raq_toy": {
+    "path": "computations\\raq_toy.py",
+    "functions": [
+      "_hermitize",
+      "_spectral_function_of",
+      "projector_error",
+      "random_unitary",
+      "gaussian_raq_projector",
+      "box_raq_projector",
+      "physical_spectral_projector",
+      "dirac_observable_from_constraint",
+      "build_toy_constraint",
+      "f",
+      "f",
+      "g"
+    ],
+    "classes": [],
+    "lines": 125
+  },
+  "spectrum": {
+    "path": "computations\\spectrum.py",
+    "functions": [
+      "eig_min",
+      "gap_OT",
+      "scan_gap_T",
+      "scan_gap_multi_scales"
+    ],
+    "classes": [],
+    "lines": 72
+  },
+  "sqrt_ops": {
+    "path": "computations\\sqrt_ops.py",
+    "functions": [
+      "sqrt_psd_matrix",
+      "bounded_generator",
+      "holder_half_norm_diff"
+    ],
+    "classes": [],
+    "lines": 38
+  },
+  "__init__": {
+    "path": "computations\\__init__.py",
+    "functions": [],
+    "classes": [],
+    "lines": 1
+  }
+}
