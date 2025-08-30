@@ -1,0 +1,68 @@
+% docs/theory/01_gauge_invariant_holonomy.tex
+% v1.0 (PR-1)
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+
+\newtheorem{theorem}{Twierdzenie}
+\newtheorem{lemma}{Lemat}
+\newtheorem{corollary}{Wniosek}
+\newtheorem{remark}{Uwaga}
+
+\title{Gauge-invariant holonomia: fazowo zminimalizowana odległość Frobeniusa}
+\author{quantum-clock-transport — Etap H / PR-1}
+\date{}
+
+\begin{document}
+\maketitle
+
+\paragraph{Cel.}
+Dla $U\in U(d)$ chcemy wyrazić \emph{niezależną od fazy globalnej} odległość od identyczności.
+Pokażemy formułę zamkniętą na
+\[
+\min_{\phi\in\mathbb{R}}\;\bigl\|e^{i\phi}U-I\bigr\|_F.
+\]
+
+\begin{theorem}[Phase-minimized distance]\label{thm:phase-min}
+Niech $U\in U(d)$. Wówczas
+\begin{equation}
+\min_{\phi\in\mathbb{R}}\;\bigl\|e^{i\phi}U-I\bigr\|_F
+=\sqrt{\,2d-2\,|\mathrm{Tr}\,U|\,}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Szkic dowodu]
+Dla dowolnego $\phi$:
+\[
+\|e^{i\phi}U-I\|_F^2
+=\mathrm{Tr}\bigl[(e^{i\phi}U-I)^\dagger(e^{i\phi}U-I)\bigr]
+=2d- e^{-i\phi}\mathrm{Tr}\,U - e^{i\phi}\overline{\mathrm{Tr}\,U}.
+\]
+Niech $z:=\mathrm{Tr}\,U\in\mathbb{C}$. Wtedy powyżej mamy $2d - 2\mathrm{Re}(e^{-i\phi}z)$.
+Maksymalizacja części rzeczywistej po $\phi$ daje $\max_\phi \mathrm{Re}(e^{-i\phi}z)=|z|$,
+co minimalizuje normę do wartości $2d-2|z|$.
+Po spierwiastkowaniu otrzymujemy tezę.
+\end{proof}
+
+\begin{corollary}[Qubit ($d=2$)]
+Dla $U\in U(2)$:
+\[
+\min_{\phi}\|e^{i\phi}U-I\|_F=\sqrt{\,4-2\,|\mathrm{Tr}\,U|\,}.
+\]
+\end{corollary}
+
+\begin{remark}[Aspekt numeryczny]
+W praktyce korzystamy bezpośrednio z $|\mathrm{Tr}\,U|$;
+dla $d=2$ implementacja sprowadza się do \texttt{sqrt(max(0, 4-2*abs\_tr))}. 
+Jeżeli $U\in SU(2)$, to $|\mathrm{Tr}\,U|\in[0,2]$.
+\end{remark}
+
+\paragraph{Zastosowanie (holonomia małej pętli).}
+Przy ekspansji małej pętli $\Gamma$ (pole $\delta A$) mamy
+$U_\Gamma=I - i\,\delta A\,F_{op}+O(\delta A^2)$,
+więc $\|U_\Gamma-I\|_F = \delta A\,\|F_{op}\|_F + O(\delta A^2)$.
+Odległość z Tw.~\ref{thm:phase-min} usuwa arbitralną fazę globalną, co czyni metrykę \emph{gauge-invariant}.
+
+\end{document}

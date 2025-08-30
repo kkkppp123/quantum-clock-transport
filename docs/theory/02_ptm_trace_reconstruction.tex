@@ -1,0 +1,57 @@
+% docs/theory/02_ptm_trace_reconstruction.tex
+% v1.0 (PR-1)
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+
+\newtheorem{theorem}{Twierdzenie}
+\newtheorem{lemma}{Lemat}
+\newtheorem{remark}{Uwaga}
+
+\title{Rekonstrukcja $|\mathrm{Tr}\,U|$ z przekątnej PTM dla jednego kubitu}
+\author{quantum-clock-transport — Etap H / PR-1}
+\date{}
+
+\begin{document}
+\maketitle
+
+\paragraph{PTM i reprezentacja adjoint.}
+Dla $U\in SU(2)$ niech $R\in SO(3)$ będzie macierzą transferu Pauliego (PTM),
+zdefiniowaną przez $R_{ij}=\frac{1}{2}\mathrm{Tr}(\sigma_i\,U\,\sigma_j\,U^\dagger)$,
+$i,j\in\{x,y,z\}$. Reprezentacja adjoint $SU(2)\to SO(3)$ daje identyfikację działania $U$
+na wektorze Blocha przez obrót $R$.
+
+\begin{theorem}[PTM $\rightarrow$ $|\mathrm{Tr}\,U|$]\label{thm:ptm-trace}
+Niech $U\in SU(2)$ i niech $r_{xx},r_{yy},r_{zz}$ będą elementami przekątnymi odpowiadającej PTM $R$.
+Wtedy zachodzi
+\begin{equation}
+|\mathrm{Tr}\,U|^2 \;=\; 1 + (r_{xx}+r_{yy}+r_{zz}).
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Szkic dowodu]
+Parametryzuj $U=\exp(-\tfrac{i}{2}\theta\,\bm{n}\cdot\bm{\sigma})$, gdzie $\bm{n}$ jest jednostkowe.
+Wtedy $\mathrm{Tr}\,U=2\cos(\theta/2)$, zatem $|\mathrm{Tr}\,U|^2=4\cos^2(\theta/2)=2+2\cos\theta$.
+Z drugiej strony, odpowiadający obrót Blocha ma ślad $\mathrm{Tr}\,R=1+2\cos\theta$.
+Sumując przekątne otrzymujemy $\mathrm{Tr}\,R=r_{xx}+r_{yy}+r_{zz}=1+2\cos\theta$,
+a więc $|\mathrm{Tr}\,U|^2=1+\mathrm{Tr}\,R=1+(r_{xx}+r_{yy}+r_{zz})$.
+\end{proof}
+
+\begin{remark}[Interpretacja pomiarowa]
+$r_{ii}$ to wartość oczekiwana pomiaru $\sigma_i$ po zadziałaniu $U$ na stan własny $+1$ operatora $\sigma_i$
+(wejście i pomiar w tej samej bazie). W praktyce daje to trzy proste eksperymenty/symulacje
+do odtworzenia $|\mathrm{Tr}\,U|$ bez wrażliwości na fazę globalną.
+\end{remark}
+
+\paragraph{Aspekt numeryczny.}
+W implementacji (moduł \texttt{qct.holonomy.ptm}) liczymy $R_{ij}$ z definicji,
+a następnie zwracamy przekątną $(r_{xx},r_{yy},r_{zz})$.
+Formuła z Tw.~\ref{thm:ptm-trace} daje
+\[
+|\mathrm{Tr}\,U| \;=\; \sqrt{\,\max\{0,\; 1 + r_{xx}+r_{yy}+r_{zz}\}\,},
+\]
+co jest stabilne numerycznie (obcięcie do zera usuwa ujemności z zaokrągleń).
+
+\end{document}
